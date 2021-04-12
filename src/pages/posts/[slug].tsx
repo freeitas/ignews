@@ -32,7 +32,7 @@ export default function Post({ post }: PostProps) {
         </article>
       </main>
     </>
-  )
+  ) 
 }
 
 export const getServerSideProps: GetServerSideProps = async ({ req, params }) => {
