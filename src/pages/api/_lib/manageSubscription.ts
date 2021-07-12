@@ -3,7 +3,7 @@ import { fauna } from "../../../services/fauna";
 import { stripe } from '../../../services/stripe';
 
 export async function saveSubscription(
-  subcriptionId: string,
+  subscriptionId: string,
   customerId: string,
   createAction = false,
 ) {
@@ -19,7 +19,7 @@ export async function saveSubscription(
     )
   )
 
-  const subscription = await stripe.subscriptions.retrieve(subcriptionId)
+  const subscription = await stripe.subscriptions.retrieve(subscriptionId)
 
   const subscriptionData = {
     id: subscription.id,
@@ -43,7 +43,7 @@ export async function saveSubscription(
           q.Get(
             q.Match(
               q.Index('subscription_by_id'),
-              subscription.id,
+                subscriptionId,
             )
           )
         ),
